@@ -168,8 +168,8 @@ const output6=arr.filter((x)=>x<3)*/}
 
 const arr=[5,1,3,2,6]  
 
-//sum or max
-
+//sum  of array
+{/* 
 function findSum(arr){
     let sum=0
     for(let i=0;i<arr.length;i++){
@@ -184,3 +184,54 @@ const output8=arr.reduce(function(acc,curr){
     return acc
 },0)
 console.log(output8)
+*/}
+
+//max of array
+{/* 
+function findMax(arr){
+    let max=0
+    for(let i=0;i<arr.length;i++){
+        max=arr[i]
+    }
+    return max
+}
+console.log(findMax(arr))
+
+const output8=arr.reduce(function(max,curr){
+    if(curr>max){
+    max=curr
+   }
+    return max
+},0)
+console.log(output8)*/}
+
+//Real time example
+
+const users=[
+    {firstName:"Jubair", lastName:"Kasim",age:"25"},
+    {firstName:"Gugan", lastName:"Gurunathan",age:"75"},
+    {firstName:"Salman", lastName:"Kasim",age:"50"},
+    {firstName:"Salman", lastName:"Kasim",age:"26"}
+
+
+]
+const output1=users.map((x)=> x.firstName +" "+ x.lastName
+)
+const output=users.map(function(x){
+    return x.firstName +" "+ x.lastName
+})
+console.log(output)
+console.log(output1)
+
+const output2=users.reduce(function(acc,curr){
+    if(acc[curr.age]){
+        acc[curr.age]=++acc[curr.age]
+    }else{
+        acc[curr.age]=1
+    }
+    return acc
+},{})
+console.log(output2)
+
+const output3=users.filter((x)=>x.age<30).map((x)=>x.firstName)
+console.log(output3)
