@@ -166,7 +166,7 @@ const output6=arr.filter((x)=>x<3)*/}
 
 //REDUCE------------------------------------------------------
 
-const arr=[5,1,3,2,6]  
+//const arr=[5,1,3,2,6]  
 
 //sum  of array
 {/* 
@@ -206,14 +206,12 @@ const output8=arr.reduce(function(max,curr){
 console.log(output8)*/}
 
 //Real time example
-
+{/*
 const users=[
     {firstName:"Jubair", lastName:"Kasim",age:"25"},
     {firstName:"Gugan", lastName:"Gurunathan",age:"75"},
     {firstName:"Salman", lastName:"Kasim",age:"50"},
     {firstName:"Salman", lastName:"Kasim",age:"26"}
-
-
 ]
 const output1=users.map((x)=> x.firstName +" "+ x.lastName
 )
@@ -228,10 +226,70 @@ const output2=users.reduce(function(acc,curr){
         acc[curr.age]=++acc[curr.age]
     }else{
         acc[curr.age]=1
-    }
+}
     return acc
 },{})
 console.log(output2)
 
 const output3=users.filter((x)=>x.age<30).map((x)=>x.firstName)
 console.log(output3)
+
+ */}
+
+ //Callback Hell
+{/* 
+ const cart = ["shoes", "pants","kuta"]
+
+ api.createOrder(cart, function (){
+    api.proceedToPayment(function(){         //calback Hell
+        api.shoeOrderSummary(function(){    //prymid of doom
+            api.updateWallet()              //risk operation bcz of inversion of control
+        })                                   //if api .apiname function not work properly means entainer code will collabse
+    })
+ })
+
+//promises
+const carts = ["shoes", "pants","kuta"]
+
+createOrder(carts,function(orderId){    //callback  
+        preoceedToPayment(orderId)
+    })
+ const promise =createOrder(cart)      //initally:{data:undefine}  after undating  {data:oderId}
+
+ promise.then(orderId){
+    proceedToPayment(orderId)
+ }
+*/}
+
+ //promise Example
+
+ const api="https://api.github.com/users/akshaymarch7"
+
+ const users=fetch(api)
+
+ users.then(function(data){
+console.log(data)
+ })
+
+//promise chaining:
+
+const carts = ["shoes", "pants","kuta"]
+
+createOrder(carts,function(orderId){    //callback  
+        preoceedToPayment(orderId,function(paymentInfo){
+            showorderSummary(paymentInfo,function(){
+                updateWalletBalance()
+            });
+        });
+    });
+   
+createOrder(cart)             
+.then(function(orderId){
+    return preoceedToPayment(orderId)            //orderId=>proceedTopayment(orderId)
+})
+.then(function(paymentInfo){
+    return showorderSummary(paymentInfo)
+})
+.then(function(paymentInfo){
+    return updateWalletBalance(paymentInfo)
+})
