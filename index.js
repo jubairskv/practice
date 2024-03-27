@@ -15,14 +15,13 @@
 // eg=()=>{
 //     console.log("demo")
 // }
-// setTimeout(eg,0);    
+// setTimeout(eg,0);
 
 // setTimeout( function cb(){     //js engine won't wait for setTimeout
 //     console.log("callback")
 // },5000)
 
 // console.log("End");
-
 
 // setTimeout( function cb(){     //js engine won't wait for setTimeout
 //     console.log("callback")
@@ -38,14 +37,17 @@
 //------------------------------------------------------------------
 //Functional programming and Higher order function
 
- {/*function x(){
+{
+  /*function x(){
     console.log("function"); // calback function
 }
 
 function y(x){            //argument
     x();              //hiher order function
-} */}
-{/*
+} */
+}
+{
+  /*
 const radius =[3,1,2,4]
 
 const calArea = function (radius){
@@ -108,10 +110,12 @@ console.log(radiuss.map(area));     //both 98 and 99 line return same answer bot
 console.log(calu(radiuss,area))
 console.log(calu(radiuss,circumference))
 console.log(calu(radiuss,diameter))
-*/}
+*/
+}
 //------------------------------------------------------------------
 //map,reduce,filter
-{/* 
+{
+  /* 
 const arr=[5,1,3,2,6]   //map iterate over an array and it returns nre array
 
 //double-[10,2,6,2,12]
@@ -140,10 +144,12 @@ const output = arr.map(function binary(x){     //higher order function
 
  const output3 = arr.map((x)=> x.toString(2));  //optimizing code
 console.log(output)
-*/}
+*/
+}
 
 //FILTER--------------------------------------------
-{/* 
+{
+  /* 
 const a=[5,1,3,2,6]        //filter used to filter specific value in the array
 
 function isOdd(x){
@@ -162,14 +168,16 @@ const output4 =a.filter(isOdd)
 const output5 =a.filter(function gearterThan4(x){
     return x>4;
 })
-const output6=arr.filter((x)=>x<3)*/}
+const output6=arr.filter((x)=>x<3)*/
+}
 
 //REDUCE------------------------------------------------------
 
-//const arr=[5,1,3,2,6]  
+//const arr=[5,1,3,2,6]
 
 //sum  of array
-{/* 
+{
+  /* 
 function findSum(arr){
     let sum=0
     for(let i=0;i<arr.length;i++){
@@ -184,10 +192,12 @@ const output8=arr.reduce(function(acc,curr){
     return acc
 },0)
 console.log(output8)
-*/}
+*/
+}
 
 //max of array
-{/* 
+{
+  /* 
 function findMax(arr){
     let max=0
     for(let i=0;i<arr.length;i++){
@@ -203,10 +213,12 @@ const output8=arr.reduce(function(max,curr){
    }
     return max
 },0)
-console.log(output8)*/}
+console.log(output8)*/
+}
 
 //Real time example
-{/*
+{
+  /*
 const users=[
     {firstName:"Jubair", lastName:"Kasim",age:"25"},
     {firstName:"Gugan", lastName:"Gurunathan",age:"75"},
@@ -234,10 +246,12 @@ console.log(output2)
 const output3=users.filter((x)=>x.age<30).map((x)=>x.firstName)
 console.log(output3)
 
- */}
+ */
+}
 
- //Callback Hell
-{/* 
+//Callback Hell
+{
+  /* 
  const cart = ["shoes", "pants","kuta"]
 
  api.createOrder(cart, function (){
@@ -259,20 +273,22 @@ createOrder(carts,function(orderId){    //callback
  promise.then(orderId){
     proceedToPayment(orderId)
  }
-*/}
+*/
+}
 
- //promise Example
+//promise Example
 
- const api="https://api.github.com/users/akshaymarch7"
+//  const api="https://api.github.com/users/akshaymarch7"
 
- const users=fetch(api)
+//  const users=fetch(api)
 
- users.then(function(data){
-console.log(data)
- })
+//  users.then(function(data){
+// console.log(data)
+//  })
 
 //promise chaining:
-
+{
+  /* 
 const carts = ["shoes", "pants","kuta"]
 
 createOrder(carts,function(orderId){    //callback  
@@ -293,3 +309,65 @@ createOrder(cart)
 .then(function(paymentInfo){
     return updateWalletBalance(paymentInfo)
 })
+*/
+}
+
+//cresting promises:
+
+const cart = ["shoes", "pants", "kuta"];
+
+const promise = createOrder(cart); //orderId
+
+promise
+  .then(function (orderId) {
+    console.log(orderId);
+    return orderId;
+    //proceedTopayment(orderiD)
+  })
+  .catch(function (err) {
+    console.log(err.message);
+  })
+  .then(function(orderId){
+    return proceedToPayment(orderId);   //promise chaining
+  })
+  .then(function(PaymentInfo){
+    console.log(PaymentInfo);
+  })
+  .catch(function (err) {
+    console.log(err.message);
+  })
+  .then(function(orderId){
+    console.log("no matters wht happens i will definetely be called")
+  });
+ 
+
+//producer
+
+function createOrder(cart) {
+  const pr = new Promise(function (resolve, reject) {
+    //createorder
+    //validCart
+    //orderId
+    if (!validateCart(cart)) {
+      const err = new Error("carts is no valid");
+      reject(err);
+    }
+    //logic for craeteOrder
+    const orderId = "12345";
+    if (orderId) {
+      setTimeout(function () {
+        resolve(orderId);
+      }, 5000);
+    }
+  });
+  return pr
+}
+
+function validateCart(cart){
+    return true         //false
+}
+function proceedToPayment(orderId){
+   return new Promise( function(resolve,reject){
+    resolve("paymenty successul")
+   })
+}
