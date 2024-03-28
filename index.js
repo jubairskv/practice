@@ -313,7 +313,7 @@ createOrder(cart)
 }
 
 //cresting promises:
-
+{/*
 const cart = ["shoes", "pants", "kuta"];
 
 const promise = createOrder(cart); //orderId
@@ -370,4 +370,109 @@ function proceedToPayment(orderId){
    return new Promise( function(resolve,reject){
     resolve("paymenty successul")
    })
-}
+} */}
+
+//Promise API
+//promise .all ():
+{/* 
+const p1=new Promise((resolve,reject)=>{
+ // setTimeout(()=>resolve("p1 success"),5000)
+  setTimeout(()=>reject("p1 fails"),2000)
+
+});
+
+const p2=new Promise((resolve,reject)=>{
+  //setTimeout(()=>resolve("p2 success"),2000)
+  setTimeout(()=>reject("p2 fails"),2000)
+
+});
+
+const p3=new Promise((resolve,reject)=>{
+  //setTimeout(()=>resolve("p3 suscces"),1000)
+  setTimeout(()=>reject("p3 reject"),4000)
+
+});
+Promise.all([p1,p2,p3]).then(res=>{
+  console.log(res)
+})
+.catch((err)=>{
+  console.error(err)
+})*/}
+
+{/* 
+//promise .allsetteled ():
+const p1=new Promise((resolve,reject)=>{
+   //setTimeout(()=>resolve("p1 success"),5000)
+   setTimeout(()=>reject("p1 fails"),2000)
+ 
+ });
+ 
+ const p2=new Promise((resolve,reject)=>{
+   setTimeout(()=>resolve("p2 success"),2000)
+   //setTimeout(()=>reject("p2 fails"),2000)
+ 
+ });
+ 
+ const p3=new Promise((resolve,reject)=>{
+   setTimeout(()=>resolve("p3 suscces"),1000)
+   //setTimeout(()=>reject("p3 reject"),4000)
+ 
+ });
+ Promise.allsetteled([p1,p2,p3]).then(res=>{
+   console.log(res)
+ })
+ .catch((err)=>{
+   console.error(err)
+ })*/}
+
+  {/*
+ //promise .race():
+const p1=new Promise((resolve,reject)=>{
+  //setTimeout(()=>resolve("p1 success"),5000)
+  setTimeout(()=>reject("p1 fails"),2000)
+
+});
+
+const p2=new Promise((resolve,reject)=>{
+  setTimeout(()=>resolve("p2 success"),1000)
+  //setTimeout(()=>reject("p2 fails"),2000)
+
+});
+
+const p3=new Promise((resolve,reject)=>{
+  setTimeout(()=>resolve("p3 suscces"),4000)
+  //setTimeout(()=>reject("p3 reject"),4000)
+
+});
+Promise.race([p1,p2,p3]).then(res=>{
+  console.log(res)
+})
+.catch((err)=>{
+  console.error(err)
+}) */}
+
+{/* 
+//promise .any():
+const p1=new Promise((resolve,reject)=>{
+  //setTimeout(()=>resolve("p1 success"),5000)
+  setTimeout(()=>reject("p1 fails"),2000)
+
+});
+
+const p2=new Promise((resolve,reject)=>{
+  setTimeout(()=>resolve("p2 success"),1000)
+  //setTimeout(()=>reject("p2 fails"),2000)
+
+});
+
+const p3=new Promise((resolve,reject)=>{
+  setTimeout(()=>resolve("p3 suscces"),4000)
+  //setTimeout(()=>reject("p3 reject"),4000)
+
+});
+Promise.any([p1,p2,p3]).then(res=>{
+  console.log(res)
+})
+.catch((err)=>{
+  console.error(err)
+})*/}
