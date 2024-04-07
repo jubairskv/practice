@@ -425,7 +425,7 @@ const p1=new Promise((resolve,reject)=>{
    console.error(err)
  })*/}
 
-  {/*
+{/*
  //promise .race():
 const p1=new Promise((resolve,reject)=>{
   //setTimeout(()=>resolve("p1 success"),5000)
@@ -476,3 +476,107 @@ Promise.any([p1,p2,p3]).then(res=>{
 .catch((err)=>{
   console.error(err)
 })*/}
+
+//promisepaasing in asyn await function:
+{/* 
+const p=new Promise((resolve,reject)=>
+resolve("hi this promise data")
+)
+
+async function getdata(){
+  return p
+}
+const dataPromise =getdata();
+console.log(dataPromise)
+dataPromise.then((res) =>console.log(res)
+
+)
+
+//aync and await
+async function getdata1(){
+  return "jubair"
+}
+const dataPromise1 =getdata1();
+console.log(dataPromise1)
+dataPromise1.then((res) =>console.log(res)
+
+)*/}
+
+{/* 
+
+// comparisation of promise and after async await:
+const promisedata= new Promise ((resolve,reject)=>{
+  setTimeout(()=>{
+    resolve("promise data")  //older way of handling promises
+  }, 10000)//5000
+  })
+
+  const promisedata2= new Promise ((resolve,reject)=>{
+    setTimeout(()=>{
+      resolve("promise data2")  //older way of handling promises
+    }, 5000)//1000
+    })
+ 
+
+// function get(){
+//   //JS engine will not wait for promise to be resolved
+//   promisedata.then((res)=>console.log(res))
+//   console.log("jubair data")
+// }
+// get()
+
+
+//after async function:
+//await is a keyword used in async function
+async function getPromise(){
+  //js engine getPromise function suspended once it return 1 data then again it will call return data
+  console.log("data")
+  const val=await promisedata; 
+  console.log("jubair data")  
+  console.log(val);
+
+  const val2=await promisedata2; 
+  console.log("jubair data")  
+  console.log(val2);
+}
+getPromise()*/}
+
+//realtime API example with async await:
+
+const Api_url = "https://api.github.com/users/jubairskv"
+
+async function handleApi() {
+  const data = await fetch(Api_url)   //implicity promise
+  const jsonvalue = await data.json()     //implicity promise
+  console.log(jsonvalue)
+  //fetc()=>response.json()=>jsonvalue
+  //fetch().then(res=>res.json()).then(res=>console.log())
+}
+
+handleApi()
+
+//with error hadling:
+
+const Api_url2 = "https://api.github.com/user/jubairskv"
+async function handleApi() {
+  try {
+    const data = await fetch(Api_url2)   //implicity promise
+    const jsonvalue = await data.json()     //implicity promise}
+  } catch (err) {
+    console.log(err);
+  }
+
+}
+
+handleApi()
+
+//old version of handling errors
+
+const Api_url3 = "https://api.github.com/user/jubairskv"
+async function handleApi() {
+  const data = await fetch(Api_url3)   //implicity promise
+  const jsonvalue = await data.json()     //implicity promise
+  //console.log(jsonvalue)
+  
+}
+handleApi().catch((err)=>console.log(err))
