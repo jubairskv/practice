@@ -541,7 +541,29 @@ async function getPromise(){
 }
 getPromise()*/}
 
+
+//realtime API example with promise:
+
+const Api_url4 = "https://api.github.com/users/jubairskv";
+
+function handleApi1() {
+  fetch(Api_url4)
+    .then(function(data) {
+      return data.json();
+    })
+    .then(function(jsonvalue) {
+      console.log(jsonvalue);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+}
+
+handleApi1();
+
+
 //realtime API example with async await:
+{/* */}
 
 const Api_url = "https://api.github.com/users/jubairskv"
 
@@ -549,6 +571,7 @@ async function handleApi() {
   const data = await fetch(Api_url)   //implicity promise
   const jsonvalue = await data.json()     //implicity promise
   console.log(jsonvalue)
+  console.log(data)
   //fetc()=>response.json()=>jsonvalue
   //fetch().then(res=>res.json()).then(res=>console.log())
 }
@@ -557,26 +580,26 @@ handleApi()
 
 //with error hadling:
 
-const Api_url2 = "https://api.github.com/user/jubairskv"
-async function handleApi() {
-  try {
-    const data = await fetch(Api_url2)   //implicity promise
-    const jsonvalue = await data.json()     //implicity promise}
-  } catch (err) {
-    console.log(err);
-  }
+// const Api_url2 = "https://api.github.com/user/jubairskv"
+// async function handleApi() {
+//   try {
+//     const data = await fetch(Api_url2)   //implicity promise
+//     const jsonvalue = await data.json()     //implicity promise}
+//   } catch (err) {
+//     console.log(err);
+//   }
 
-}
+// }
 
-handleApi()
+// handleApi()
 
-//old version of handling errors
+// //old version of handling errors
 
-const Api_url3 = "https://api.github.com/user/jubairskv"
-async function handleApi() {
-  const data = await fetch(Api_url3)   //implicity promise
-  const jsonvalue = await data.json()     //implicity promise
-  //console.log(jsonvalue)
+// const Api_url3 = "https://api.github.com/user/jubairskv"
+// async function handleApi() {
+//   const data = await fetch(Api_url3)   //implicity promise
+//   const jsonvalue = await data.json()     //implicity promise
+//   //console.log(jsonvalue)
   
-}
-handleApi().catch((err)=>console.log(err))
+// }
+// handleApi().catch((err)=>console.log(err))
