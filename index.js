@@ -1,3 +1,4 @@
+//"use strict"
 // document.addEventListener("DOMContentLoaded", function() {
 //     document.getElementById("clickMe").addEventListener("click", function() {
 //         console.log("btn clicked");
@@ -543,7 +544,7 @@ getPromise()*/}
 
 
 //realtime API example with promise:
-
+{/*
 const Api_url4 = "https://api.github.com/users/jubairskv";
 
 function handleApi1() {
@@ -563,7 +564,7 @@ handleApi1();
 
 
 //realtime API example with async await:
-{/* */}
+{/* 
 
 const Api_url = "https://api.github.com/users/jubairskv"
 
@@ -576,7 +577,7 @@ async function handleApi() {
   //fetch().then(res=>res.json()).then(res=>console.log())
 }
 
-handleApi()
+handleApi()*/}
 
 //with error hadling:
 
@@ -603,3 +604,84 @@ handleApi()
   
 // }
 // handleApi().catch((err)=>console.log(err))
+
+//this keyword
+
+{/* if the value of this keyword is undefine or null 
+this keywword will be replacedwith global object only
+ in non strict mode */}
+
+ //this kwyowrd value depnds on how this is called
+
+console.log(this)
+
+function x(){
+  //the value depends on strict and non strict mode
+  //the value this this is how the function is called
+  console.log(this)
+}
+
+x(); //undefine in strict mode
+window.x();  //window in strict mode
+
+const data = ()=>{
+  console.log(this)
+}
+console.log(data)
+
+const object ={    //if u will make a function as a part of an  object that is know as method
+   a:10,
+   name:"jubair",
+   x:function(){
+    console.log(this.name); //this ref to object
+   }
+}
+object.x(); //this inside a object's method
+
+const student={
+  name:"vagitha"
+}
+object.x.call(student)
+
+//this in arrow function
+{/* arrow function dont have there own this they take value of the lexical environment where they enclosed  */}
+ const obj={
+  a:10,
+  x:function(){
+    //enclosing lexical context 
+    console.log(this)
+    const z =()=>{
+      console.log(this)
+    }
+    z();
+  },
+  y:()=>{
+    console.log(this)
+  }
+ }
+obj.x()
+obj.y() // now y method refers to global space [lexical context] so this return window  
+
+//call(),apply(),bind() in this keyword
+//call apply  and bind method used fr browwing data fron different function
+{/* 
+const name={
+  firstName:"jubair",
+  lastName:"Kasim vagitha",
+  printfullName:function(hometown,village){
+    console.log(this.firstName + " " + this.lastName +" "+ "from" +" "+ hometown+" "+ village);
+  } 
+}
+name.printfullName("salem","idappadi")
+
+const name2={
+  firstName:"salman",
+  lastName:"kasim vagitha"
+}
+name.printfullName.call(name2, "salem") //in call method we pass indival argument
+name.printfullName.apply(name2, ["salem","idappadi"])//in apply method we passing argument ass like array
+let printfullMyname=name.printfullName.bind(name2, ["salem","idappadi"])
+console.log(printfullMyname)
+printfullMyname()*/}
+
+//this keyword in dom element=>ref to html elemt     ref html code
